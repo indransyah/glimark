@@ -17,6 +17,7 @@
     <meta data-browser="chrome" data-browser-major="59">
     <meta data-body-font-family="Lato" data-body-font-type="google">
     <meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/19722139/digital_wallets/dialog" />
+    <!--
     <script type="text/javascript">
         (function() {
             window.ShopifyExperiments = {};
@@ -25,8 +26,9 @@
             window.ShopifyExperiments.customerNotificationSubscriptions = false;
         })();
     </script>
+    -->
     <script src="/javascripts/checkout.js"></script>
-    <meta name="shopify-checkout-authorization-token" content="eb462edddff71930450f65a40685dd7d" />
+    <!-- <meta name="shopify-checkout-authorization-token" content="eb462edddff71930450f65a40685dd7d" /> -->
     <script src="/javascripts/countries.js"></script>
     <script type="text/javascript">
         if (window.opener) {
@@ -107,10 +109,13 @@
             Shopify.Checkout.rememberMeCookieIsHere = true;
         }
     </script>
+    <!--
     <script type="text/javascript">
         Shopify.clientAttributesCollectionEventName = "client_attributes_checkout";
         var DF_CHECKOUT_TOKEN = "dfc35b917ef8e5e6a9600d9758e64d9f";
     </script>
+    -->
+    <!--
     <script id="__st">
         //<![CDATA[
         var __st = {
@@ -124,7 +129,8 @@
         };
         //]]>
     </script>
-    <script src="https://cdn.shopify.com/s/javascripts/shopify_stats.js?v=6" type="text/javascript" async="async"></script>
+    -->
+    <!-- <script src="https://cdn.shopify.com/s/javascripts/shopify_stats.js?v=6" type="text/javascript" async="async"></script> -->
 </head>
 
 <body>
@@ -377,6 +383,7 @@
             </div>
         </div>
     </div>
+    <!--
     <script type="text/javascript">
         window.ShopifyAnalytics = window.ShopifyAnalytics || {};
         window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
@@ -392,9 +399,15 @@
             window.ShopifyAnalytics.meta[attr] = meta[attr];
         }
     </script>
+    -->
+
+    <!--
     <script type="text/javascript">
         window.ShopifyAnalytics.merchantGoogleAnalytics = function() {};
     </script>
+    -->
+
+    <!--
     <script type="text/javascript" class="analytics">
         (window.gaDevIds = window.gaDevIds || []).push('BwiEti');
         (function() {
@@ -526,5 +539,6 @@
             document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);
         })();
     </script>
+    -->
 </body>
 </html>
