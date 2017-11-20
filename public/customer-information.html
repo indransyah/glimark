@@ -186,17 +186,13 @@
                                         <th scope="col"><span class="visually-hidden">Price</span></th>
                                     </tr>
                                     </thead>
-                                    <tbody data-order-summary-section="line-items"> </tbody>
+                                    <tbody data-order-summary-section="line-items"></tbody>
                                 </table>
                                 <div class="order-summary__scroll-indicator"> Scroll for more items <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 10 12"><path d="M9.817 7.624l-4.375 4.2c-.245.235-.64.235-.884 0l-4.375-4.2c-.244-.234-.244-.614 0-.848.245-.235.64-.235.884 0L4.375 9.95V.6c0-.332.28-.6.625-.6s.625.268.625.6v9.35l3.308-3.174c.122-.117.282-.176.442-.176.16 0 .32.06.442.176.244.234.244.614 0 .848"/></svg> </div>
                             </div>
                         </div>
                         <div class="order-summary__section order-summary__section--discount">
                             <form class="edit_checkout" action="#" accept-charset="UTF-8" method="post">
-                                <input name="utf8" type="hidden" value="&#x2713;" />
-                                <input type="hidden" name="_method" value="patch" />
-                                <input type="hidden" name="authenticity_token" value="aDEzPYB7kMIhM2F06Sh/Xs3JF02irB1FNaqxt8U7rA2TJgwVi+2Bl6QD8EnC2xhM5h+BgnPBlrh4Z+PJgYzgnQ==" />
-                                <input type="hidden" name="step" value="contact_information" />
                                 <div class="fieldset">
                                     <div class="field ">
                                         <label class="field__label" for="checkout_reduction_code">Discount</label>
@@ -213,12 +209,6 @@
                                     </div>
                                 </div>
                             </form>
-                            <form class="edit_checkout" action="/19722139/checkouts/dfc35b917ef8e5e6a9600d9758e64d9f" accept-charset="UTF-8" method="post">
-                                <input name="utf8" type="hidden" value="&#x2713;" />
-                                <input type="hidden" name="_method" value="patch" />
-                                <input type="hidden" name="authenticity_token" value="wED24ucFlMsTEmDqIwpjjhUtwMOSXJkLp+zhcP3HKww7V8nK7JOFnpYi8dcI+QScPvtWDEMxEvbqIbMOuXBnnA==" />
-                                <input type="hidden" name="step" value="contact_information" />
-                            </form>
                         </div>
                         <div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
                             <table class="total-line-table" aria-live="polite" aria-atomic="true">
@@ -233,25 +223,25 @@
                                 <tr class="total-line total-line--subtotal">
                                     <td class="total-line__name">Subtotal</td>
                                     <td class="total-line__price">
-                                                <span class="order-summary__emphasis" data-checkout-subtotal-price-target="0">
-                                                    —
-                                                </span>
+                                        <span class="order-summary__emphasis" data-checkout-subtotal-price-target="0">
+                                            Rp 0.00
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr class="total-line total-line--shipping">
                                     <td class="total-line__name">Shipping</td>
                                     <td class="total-line__price">
-                                                <span class="order-summary__emphasis" data-checkout-total-shipping-target="0">
-                                                    —
-                                                </span>
+                                        <span class="order-summary__emphasis" data-checkout-total-shipping-target="0">
+                                            Rp 0.00
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr class="total-line total-line--taxes hidden" data-checkout-taxes>
                                     <td class="total-line__name">Taxes</td>
                                     <td class="total-line__price">
-                                                <span class="order-summary__emphasis" data-checkout-total-taxes-target="0">
-                                                    —
-                                                </span>
+                                        <span class="order-summary__emphasis" data-checkout-total-taxes-target="0">
+                                            Rp 0.00
+                                        </span>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -261,9 +251,9 @@
                                         <span class="payment-due-label__total">Total</span>
                                     </td>
                                     <td class="total-line__price payment-due">
-                                                <span class="payment-due__price" data-checkout-payment-due-target="0">
-                                                    —
-                                                </span>
+                                        <span class="payment-due__price" data-checkout-payment-due-target="0">
+                                            Rp 0.00
+                                        </span>
                                     </td>
                                 </tr>
                                 </tfoot>
@@ -594,210 +584,6 @@
     })();
 </script>
 -->
-<script type="text/javascript">
-
-    function formatMoney(number) {
-        number = parseInt(number.toString().substr(0, number.toString().length - 2))
-        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 2 }).format(number)
-    }
-
-    function validateEmail(email) {
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) && email !== '') {
-            return true
-        }
-        return false
-    }
-
-    var $ = window.Checkout.$
-    var lineItems = []
-    var cart, discountReduction = 0
-    $.ajax({
-        type: 'GET',
-        url: 'https://www.glimark.com/cart.json',
-        dataType: 'jsonp',
-        success: function(data) {
-            cart = data
-            $('.total-line--subtotal span').text(formatMoney(cart.original_total_price))
-            $('.payment-due__price').text(formatMoney(cart.total_price))
-            cart.items.map(function(item) {
-                lineItems.push({
-                    variant_id: item.variant_id,
-                    quantity: item.quantity
-                })
-                var productTemplate = `
-                    <tr class="product" data-product-id="${item.id}" data-variant-id="${item.variant_id}" data-product-type="${item.product_type}">
-                        <td class="product__image">
-                            <div class="product-thumbnail">
-                                <div class="product-thumbnail__wrapper">
-                                    <img alt="${item.product_title}" class="product-thumbnail__image" src="${item.image}" />
-                                </div>
-                                <span class="product-thumbnail__quantity" aria-hidden="true">${item.quantity}</span>
-                            </div>
-                        </td>
-                        <td class="product__description">
-                            <span class="product__description__name order-summary__emphasis">${item.product_title}</span>
-                            <span class="product__description__variant order-summary__small-text"></span>
-                        </td>
-                        <td class="product__quantity visually-hidden">${item.quantity}</td>
-                        <td class="product__price">
-                            <span class="order-summary__emphasis">${formatMoney(item.line_price)}</span>
-                        </td>
-                    </tr>
-                    `
-                $('.product-table tbody').append(productTemplate)
-            })
-            $('.total-line--reduction .total-line__price').text(`- ${formatMoney(cart.total_price)}`)
-        }
-    })
-
-    $('#checkout_reduction_code').keyup(function(e) {
-        if(e.target.value === '') {
-            $('.order-summary__section--discount button').addClass('btn--disabled')
-        } else {
-            $('.order-summary__section--discount button').removeClass('btn--disabled')
-        }
-    })
-
-    function errorMessage(type, message) {
-        return `<p class="field__message field__message--error" id="error-for-${type}">${message}</p>`
-    }
-
-    function isEmpty(text) {
-        return (text === '') ? true : false
-    }
-
-    function validateForm() {
-        var email = $('[name="checkout[email]"]'),
-            lastName = $('[name="checkout[shipping_address][last_name]"]'),
-            address1 = $('[name="checkout[shipping_address][address1]"]'),
-            city = $('[name="checkout[shipping_address][city]"]'),
-            province = $('[name="checkout[shipping_address][province]"]'),
-            zip = $('[name="checkout[shipping_address][zip]"]')
-        if (!validateEmail(email.val())) {
-            if (email.closest('.field').find('.field__message--error').length === 0) {
-                email.closest('.field').addClass('field--error').append(errorMessage('email', 'Please enter a valid email address'))
-            }
-        }
-        if (isEmpty(lastName.val())) {
-            if (lastName.closest('.field').find('.field__message--error').length === 0) {
-                lastName.closest('.field').addClass('field--error').append(errorMessage('last_name', 'Please enter your last name'))
-            }
-        }
-        if (isEmpty(address1.val())) {
-            if (address1.closest('.field').find('.field__message--error').length === 0) {
-                address1.closest('.field').addClass('field--error').append(errorMessage('address1', 'Please enter your address'))
-            }
-        }
-        if (isEmpty(city.val())) {
-            if (city.closest('.field').find('.field__message--error').length === 0) {
-                city.closest('.field').addClass('field--error').append(errorMessage('city', 'Please enter your city'))
-            }
-        }
-        if (isEmpty(province.val())) {
-            if (province.closest('.field').find('.field__message--error').length === 0) {
-                province.closest('.field').addClass('field--error').append(errorMessage('province', 'Please select your state / province'))
-            }
-        }
-        if (isEmpty(zip.val())) {
-            if (zip.closest('.field').find('.field__message--error').length === 0) {
-                zip.closest('.field').addClass('field--error').append(errorMessage('zip', 'Please enter your zip / postal code'))
-            }
-        }
-    }
-
-    $('.step form').submit(function (e) {
-        e.preventDefault()
-        validateForm()
-        var email = $('[name="checkout[email]"]').val(),
-        isSubscribe = $('[name="checkout[buyer_accepts_marketing]"]').is(':checked'),
-        firstName = $('[name="checkout[shipping_address][first_name]"]').val(),
-        lastName = $('[name="checkout[shipping_address][last_name]"]').val(),
-        address1 = $('[name="checkout[shipping_address][address1]"]').val(),
-        address2 = $('[name="checkout[shipping_address][address2]"]').val(),
-        city = $('[name="checkout[shipping_address][city]"]').val(),
-        country = $('[name="checkout[shipping_address][country]"]').val(),
-        province = $('[name="checkout[shipping_address][province]"]').val(),
-        zip = $('[name="checkout[shipping_address][zip]"]').val(),
-        phone = $('[name="checkout[shipping_address][phone]"]').val(),
-        isRememberMe = $('[name="checkout[remember_me]"]').is(':checked')
-        var order = {
-            "line_items": lineItems,
-            "customer": {
-                "first_name": firstName,
-                "last_name": lastName,
-                "email": email
-            },
-            "shipping_address": {
-                "first_name": firstName,
-                "last_name": lastName,
-                "address1": address1,
-                "phone": phone,
-                "city": city,
-                "province": province,
-                "country": country,
-                "zip": zip
-            },
-            "email": email,
-            "financial_status": "pending"
-        }
-        console.log('order', order)
-    })
-
-    function resetDiscountForm() {
-        $('.order-summary__section--discount button').addClass('btn--disabled')
-        $('#checkout_reduction_code').val('')
-    }
-
-    $('.order-summary__section--discount form').submit(function (e) {
-        e.preventDefault()
-        if (!$('.order-summary__section--discount button').hasClass('btn--disabled')) {
-            const discountCode = $('#checkout_reduction_code').val()
-            $.ajax({
-                type: 'GET',
-                url: glimarkAPIUrl + 'discounts?code=' + discountCode.toUpperCase(),
-                success: function (data) {
-                    if (data.length === 1) {
-                        var discount = data[0]
-                        $.ajax({
-                            url: glimarkAPIUrl + 'pricerules/' + discount.price_rule_id,
-                            success: function (data) {
-                                resetDiscountForm()
-                                discountReduction = parseInt(cart.original_total_price.toString().substr(0, cart.original_total_price.toString().length - 2)) * (parseInt(data.value) / 100)
-                                $('.total-line-table__tbody').append(`
-                                    <tr class="total-line total-line--reduction " data-discount-success="" data-discount-type="percentage">
-                                        <td class="total-line__name">
-                                            <span>Discount</span>
-                                            <span class="applied-reduction-code">
-                                                <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg" class="applied-reduction-code__icon" fill="#CE4549"><path d="M14.476 0H8.76c-.404 0-.792.15-1.078.42L.446 7.207c-.595.558-.595 1.463 0 2.022l5.703 5.35c.296.28.687.42 1.076.42.39 0 .78-.14 1.077-.418l7.25-6.79c.286-.268.447-.632.447-1.01V1.43C16 .64 15.318 0 14.476 0zm-2.62 5.77c-.944 0-1.713-.777-1.713-1.732 0-.954.77-1.73 1.714-1.73.945 0 1.714.776 1.714 1.73 0 .955-.768 1.73-1.713 1.73z"></path></svg>
-                                                <span class="applied-reduction-code__information">${discountCode.toUpperCase()}</span>
-                                            </span>
-                                            <input value="1" size="30" type="hidden" name="checkout[clear_discount]" id="checkout_clear_discount">
-                                            <button type="submit" class="applied-reduction-code__clear-button icon icon--clear">
-                                                <span class="visually-hidden">Remove discount</span>
-                                            </button>
-                                        </td>
-                                        <td class="total-line__price">
-                                            <span class="order-summary__emphasis" data-checkout-discount-amount-target="${discountReduction}">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 2 }).format(discountReduction)}</span>
-                                        </td>
-                                    </tr>
-                                `)
-                                var total = parseInt(cart.total_price.toString().substr(0, cart.total_price.toString().length - 2)) + discountReduction
-                                $('.payment-due__price').text(new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 2 }).format(total))
-                            }
-                        })
-                    } else {
-                        resetDiscountForm()
-                    }
-                }
-            })
-        }
-    })
-
-    $(document).on('click', '.applied-reduction-code__clear-button', function (e) {
-        e.preventDefault()
-        $('.total-line-table__tbody').find('.total-line--reduction').remove()
-        $('.payment-due__price').text(formatMoney(cart.total_price))
-    })
-</script>
+<script src="/javascripts/custom.js"></script>
 </body>
 </html>

@@ -16,7 +16,8 @@
         <link href='//fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
         <meta data-browser="chrome" data-browser-major="59">
         <meta data-body-font-family="Lato" data-body-font-type="google">
-        <meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/19722139/digital_wallets/dialog" />
+        <!--<meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/19722139/digital_wallets/dialog" />-->
+        <!--
         <script type="text/javascript">
             (function() {
                 window.ShopifyExperiments = {};
@@ -25,8 +26,10 @@
                 window.ShopifyExperiments.customerNotificationSubscriptions = false;
             })();
         </script>
+        -->
         <script src="/javascripts/checkout.js"></script>
-        <meta name="shopify-checkout-authorization-token" content="eb462edddff71930450f65a40685dd7d" />
+        <script src="/javascripts/constant.js"></script>
+        <!--<meta name="shopify-checkout-authorization-token" content="eb462edddff71930450f65a40685dd7d" />-->
         <script type="text/javascript">
             if (window.opener) {
                 window.opener.postMessage(JSON.stringify({
@@ -106,10 +109,13 @@
                 Shopify.Checkout.rememberMeCookieIsHere = true;
             }
         </script>
+        <!--
         <script type="text/javascript">
             Shopify.clientAttributesCollectionEventName = "client_attributes_checkout";
             var DF_CHECKOUT_TOKEN = "dfc35b917ef8e5e6a9600d9758e64d9f";
         </script>
+        -->
+        <!--
         <script id="__st">
             //<![CDATA[
             var __st = {
@@ -123,7 +129,10 @@
             };
             //]]>
         </script>
+        -->
+        <!--
         <script src="https://cdn.shopify.com/s/javascripts/shopify_stats.js?v=6" type="text/javascript" async="async"></script>
+        -->
     </head>
 
     <body>
@@ -150,7 +159,7 @@
                         <svg width="11" height="7" xmlns="http://www.w3.org/2000/svg" class="order-summary-toggle__dropdown" fill="#000"><path d="M6.138.876L5.642.438l-.496.438L.504 4.972l.992 1.124L6.138 2l-.496.436 3.862 3.408.992-1.122L6.138.876z" /></svg>
                     </div>
                     <div class="order-summary-toggle__total-recap total-recap" data-order-summary-section="toggle-total-recap">
-                        <span class="total-recap__final-price" data-checkout-payment-due-target="14870000">Rp 148,700.00</span>
+                        <span class="total-recap__final-price" data-checkout-payment-due-target="0">Rp 0.00</span>
                     </div>
                 </div>
             </div>
@@ -178,27 +187,20 @@
                                                     <th scope="col"><span class="visually-hidden">Price</span></th>
                                                 </tr>
                                             </thead>
-                                            <tbody data-order-summary-section="line-items">
-                                                <tr class="product" data-product-id="9487259729" data-variant-id="36941519249" data-product-type="Velvet Lip Mark">
-                                                    <td class="product__image">
-                                                        <div class="product-thumbnail">
-                                                            <div class="product-thumbnail__wrapper"> <img alt="Velvet Lip Mark - Naomi" class="product-thumbnail__image" src="//cdn.shopify.com/s/files/1/1972/2139/products/Iced_Mocha_small.jpg?6897691620446344079" /> </div> <span class="product-thumbnail__quantity" aria-hidden="true">1</span> </div>
-                                                    </td>
-                                                    <td class="product__description"> <span class="product__description__name order-summary__emphasis">Velvet Lip Mark - Naomi</span> <span class="product__description__variant order-summary__small-text"></span> </td>
-                                                    <td class="product__quantity visually-hidden"> 1 </td>
-                                                    <td class="product__price"> <span class="order-summary__emphasis">Rp 148,700.00</span> </td>
-                                                </tr>
-                                            </tbody>
+                                            <tbody data-order-summary-section="line-items"></tbody>
                                         </table>
                                         <div class="order-summary__scroll-indicator"> Scroll for more items <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 10 12"><path d="M9.817 7.624l-4.375 4.2c-.245.235-.64.235-.884 0l-4.375-4.2c-.244-.234-.244-.614 0-.848.245-.235.64-.235.884 0L4.375 9.95V.6c0-.332.28-.6.625-.6s.625.268.625.6v9.35l3.308-3.174c.122-.117.282-.176.442-.176.16 0 .32.06.442.176.244.234.244.614 0 .848"/></svg> </div>
                                     </div>
                                 </div>
-                                <div class="order-summary__section order-summary__section--discount" data-reduction-form="update">
-                                    <form class="edit_checkout" action="/19722139/checkouts/dfc35b917ef8e5e6a9600d9758e64d9f" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="W4AN0HOcdW6Z2XRsjudNBvvLYa+rTG/oJZ2qFcZIUqKglzL4eApkOxzp5VGlFCoU0B33YHoh5BVoUPhrgv8eMg==" /> <input type="hidden" name="step" value="shipping_method" />
+                                <div class="order-summary__section order-summary__section--discount">
+                                    <form class="edit_checkout" action="" accept-charset="UTF-8" method="post">
                                         <div class="fieldset">
-                                            <div class="field "> <label class="field__label" for="checkout_reduction_code">Discount</label>
+                                            <div class="field ">
+                                                <label class="field__label" for="checkout_reduction_code">Discount</label>
                                                 <div class="field__input-btn-wrapper">
-                                                    <div class="field__input-wrapper"> <input placeholder="Discount" class="field__input" data-discount-field="true" autocomplete="off" aria-required="true" size="30" type="text" name="checkout[reduction_code]" id="checkout_reduction_code" /> </div>
+                                                    <div class="field__input-wrapper">
+                                                        <input placeholder="Discount" class="field__input" data-discount-field="true" autocomplete="off" aria-required="true" size="30" type="text" name="checkout[reduction_code]" id="checkout_reduction_code" />
+                                                    </div>
                                                     <button type="submit" class="field__input-btn btn btn--default btn--disabled">
                                                         <span class="btn__content visually-hidden-on-mobile">Apply</span>
                                                         <i class="btn__content shown-on-mobile icon icon--arrow"></i>
@@ -208,7 +210,6 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <form class="edit_checkout" action="/19722139/checkouts/dfc35b917ef8e5e6a9600d9758e64d9f" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="HZiKsN/BTQCj3eX99RswhL7MF279C8NeMnhgZg9LvHjmj7WY1FdcVSbtdMDe6FeWlRqBoSxmSKN/tTIYS/zw6A==" /> <input type="hidden" name="step" value="shipping_method" /> </form>
                                 </div>
                                 <div class="order-summary__section order-summary__section--total-lines" data-order-summary-section="payment-lines">
                                     <table class="total-line-table" aria-live="polite" aria-atomic="true">
@@ -222,21 +223,31 @@
                                         <tbody class="total-line-table__tbody">
                                             <tr class="total-line total-line--subtotal">
                                                 <td class="total-line__name">Subtotal</td>
-                                                <td class="total-line__price"> <span class="order-summary__emphasis" data-checkout-subtotal-price-target="14870000"> Rp 148,700.00 </span> </td>
+                                                <td class="total-line__price">
+                                                    <span class="order-summary__emphasis" data-checkout-subtotal-price-target="0">Rp 0.00</span>
+                                                </td>
                                             </tr>
                                             <tr class="total-line total-line--shipping">
                                                 <td class="total-line__name">Shipping</td>
-                                                <td class="total-line__price"> <span class="order-summary__emphasis" data-checkout-total-shipping-target="0"> — </span> </td>
+                                                <td class="total-line__price">
+                                                    <span class="order-summary__emphasis" data-checkout-total-shipping-target="0">Rp 0.00</span>
+                                                </td>
                                             </tr>
                                             <tr class="total-line total-line--taxes hidden" data-checkout-taxes>
                                                 <td class="total-line__name">Taxes</td>
-                                                <td class="total-line__price"> <span class="order-summary__emphasis" data-checkout-total-taxes-target="0">Rp 0.00</span> </td>
+                                                <td class="total-line__price">
+                                                    <span class="order-summary__emphasis" data-checkout-total-taxes-target="0">Rp 0.00</span>
+                                                </td>
                                             </tr>
                                         </tbody>
                                         <tfoot class="total-line-table__footer">
                                             <tr class="total-line">
-                                                <td class="total-line__name payment-due-label"> <span class="payment-due-label__total">Total</span> </td>
-                                                <td class="total-line__price payment-due"> <span class="payment-due__price" data-checkout-payment-due-target="14870000"> Rp 148,700.00 </span> </td>
+                                                <td class="total-line__name payment-due-label">
+                                                    <span class="payment-due-label__total">Total</span>
+                                                </td>
+                                                <td class="total-line__price payment-due">
+                                                    <span class="payment-due__price" data-checkout-payment-due-target="0">Rp 0.00</span>
+                                                </td>
                                             </tr>
                                         </tfoot>
                                     </table>
@@ -251,7 +262,7 @@
                             <h1 class="logo__text visually-hidden">GLIMARK</h1> <img alt="GLIMARK" class="logo__image logo__image--medium" src="/images/lg-w-ret_6267db6f-facb-40c4-851c-3277051fd91d.png" /> </a>
                         <ul class="breadcrumb ">
                             <li class="breadcrumb__item breadcrumb__item--completed"> <a class="breadcrumb__link" href="https://www.glimark.com/cart">Cart</a> <svg class="icon-svg icon-svg--size-10 breadcrumb__chevron-icon rtl-flip" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M2 1l1-1 4 4 1 1-1 1-4 4-1-1 4-4"/></svg> </li>
-                            <li class="breadcrumb__item breadcrumb__item--completed"> <a class="breadcrumb__link" href="/19722139/checkouts/dfc35b917ef8e5e6a9600d9758e64d9f?step=contact_information">Customer information</a> <svg class="icon-svg icon-svg--size-10 breadcrumb__chevron-icon rtl-flip" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M2 1l1-1 4 4 1 1-1 1-4 4-1-1 4-4"/></svg> </li>
+                            <li class="breadcrumb__item breadcrumb__item--completed"> <a class="breadcrumb__link" href="/customer-information.html">Customer information</a> <svg class="icon-svg icon-svg--size-10 breadcrumb__chevron-icon rtl-flip" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M2 1l1-1 4 4 1 1-1 1-4 4-1-1 4-4"/></svg> </li>
                             <li class="breadcrumb__item breadcrumb__item--current"> <span class="breadcrumb__text">Shipping method</span> <svg class="icon-svg icon-svg--size-10 breadcrumb__chevron-icon rtl-flip" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M2 1l1-1 4 4 1 1-1 1-4 4-1-1 4-4"/></svg> </li>
                             <li class="breadcrumb__item breadcrumb__item--blank"> <span class="breadcrumb__text">Payment method</span> </li>
                         </ul>
@@ -259,7 +270,12 @@
                     </div>
                     <div class="main__content">
                         <div class="step" data-step="shipping_method">
-                            <form data-shipping-method-form="true" class="edit_checkout" action="/19722139/checkouts/dfc35b917ef8e5e6a9600d9758e64d9f" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="+9gV9NYB61e8b4+YobxH+kk0z2jaE5NeQSg+Y0Aai00Azyrc3Zf6AjlfHqWKTyDoYuJZpwt+GKMM5WwdBK3H3Q==" /> <input type="hidden" name="previous_step" id="previous_step" value="shipping_method" /> <input type="hidden" name="step" value="payment_method" />
+                            <form data-shipping-method-form="true" class="edit_checkout" action="#" accept-charset="UTF-8" method="post">
+                                <input name="utf8" type="hidden" value="&#x2713;" />
+                                <input type="hidden" name="_method" value="patch" />
+                                <input type="hidden" name="authenticity_token" value="+9gV9NYB61e8b4+YobxH+kk0z2jaE5NeQSg+Y0Aai00Azyrc3Zf6AjlfHqWKTyDoYuJZpwt+GKMM5WwdBK3H3Q==" />
+                                <input type="hidden" name="previous_step" id="previous_step" value="shipping_method" />
+                                <input type="hidden" name="step" value="payment_method" />
                                 <div class="step__sections">
                                     <div class="section">
                                         <div class="content-box">
@@ -267,9 +283,9 @@
                                                 <div class="review-block">
                                                     <div class="review-block__inner">
                                                         <div class="review-block__label"> Shipping address </div>
-                                                        <div class="review-block__content"> jalan taman surya 5 blok PP 1 no 33, Jakarta, Indonesia </div>
+                                                        <div class="review-block__content"></div>
                                                     </div>
-                                                    <div class="review-block__link"> <a class="link--small" href="/19722139/checkouts/dfc35b917ef8e5e6a9600d9758e64d9f?step=contact_information"> <span aria-hidden>Edit</span> <span class="visually-hidden">Edit shipping address</span> </a> </div>
+                                                    <div class="review-block__link"> <a class="link--small" href="/customer-information.html"> <span aria-hidden>Edit</span> <span class="visually-hidden">Edit shipping address</span> </a> </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,7 +299,7 @@
                                                 <div class="content-box__row">
                                                     <div class="radio-wrapper" data-shipping-method="shopify-1-2%20days%20delivery%20(1%20day%20Jadetabek,%202%20days%20the%20rest)-0.00">
                                                         <div class="radio__input">
-                                                            <input class="input-radio" data-checkout-total-shipping="Free" data-checkout-total-shipping-cents="0" data-checkout-shipping-rate="Free" data-checkout-original-shipping-rate="Free" data-checkout-total-taxes="Rp 0.00" data-checkout-total-taxes-cents="0" data-checkout-total-price="Rp 148,700.00" data-checkout-total-price-cents="14870000" data-checkout-payment-due="Rp 148,700.00" data-checkout-payment-due-cents="14870000" data-checkout-payment-subform="required" data-checkout-subtotal-price="Rp 148,700.00" data-checkout-subtotal-price-cents="14870000" data-backup="shopify-1-2%20days%20delivery%20(1%20day%20Jadetabek,%202%20days%20the%20rest)-0.00" type="radio" value="shopify-1-2%20days%20delivery%20(1%20day%20Jadetabek,%202%20days%20the%20rest)-0.00" name="checkout[shipping_rate][id]" id="checkout_shipping_rate_id_shopify-1-220days20delivery20120day20jadetabek20220days20the20rest-000" />
+                                                            <input class="input-radio" data-checkout-total-shipping="Free" data-checkout-total-shipping-cents="0" data-checkout-shipping-rate="Free" data-checkout-original-shipping-rate="Free" data-checkout-total-taxes="Rp 0.00" data-checkout-total-taxes-cents="0" data-checkout-total-price="Rp 0.00" data-checkout-total-price-cents="0" data-checkout-payment-due="Rp 0.00" data-checkout-payment-due-cents="0" data-checkout-payment-subform="required" data-checkout-subtotal-price="Rp 0.00" data-checkout-subtotal-price-cents="0" data-backup="shopify-1-2%20days%20delivery%20(1%20day%20Jadetabek,%202%20days%20the%20rest)-0.00" type="radio" value="shopify-1-2%20days%20delivery%20(1%20day%20Jadetabek,%202%20days%20the%20rest)-0.00" name="checkout[shipping_rate][id]" id="checkout_shipping_rate_id_shopify-1-220days20delivery20120day20jadetabek20220days20the20rest-000" />
                                                         </div>
                                                         <label class="radio__label" for="checkout_shipping_rate_id_shopify-1-220days20delivery20120day20jadetabek20220days20the20rest-000">
                                                             <span class="radio__label__primary" data-shipping-method-label-title="1-2 days delivery (1 day Jadetabek, 2 days the rest)">
@@ -305,7 +321,7 @@
                                         <span class="btn__content">Continue to payment method</span>
                                         <i class="btn__spinner icon icon--button-spinner"></i>
                                     </button>
-                                    <a class="step__footer__previous-link" href="/19722139/checkouts/dfc35b917ef8e5e6a9600d9758e64d9f?step=contact_information"><svg class="icon-svg icon-svg--color-accent icon-svg--size-10 previous-link__icon rtl-flip" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M8 1L7 0 3 4 2 5l1 1 4 4 1-1-4-4"/></svg>
+                                    <a class="step__footer__previous-link" href="/customer-information.html"><svg class="icon-svg icon-svg--color-accent icon-svg--size-10 previous-link__icon rtl-flip" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path d="M8 1L7 0 3 4 2 5l1 1 4 4 1-1-4-4"/></svg>
                                         <span class="step__footer__previous-link-content">Return to customer information</span>
                                     </a>
                                 </div>
@@ -321,6 +337,7 @@
                 </div>
             </div>
         </div>
+        <!--
         <script type="text/javascript">
             window.ShopifyAnalytics = window.ShopifyAnalytics || {};
             window.ShopifyAnalytics.meta = window.ShopifyAnalytics.meta || {};
@@ -336,9 +353,13 @@
                 window.ShopifyAnalytics.meta[attr] = meta[attr];
             }
         </script>
+        -->
+        <!--
         <script type="text/javascript">
             window.ShopifyAnalytics.merchantGoogleAnalytics = function() {};
         </script>
+        -->
+        <!--
         <script type="text/javascript" class="analytics">
             (window.gaDevIds = window.gaDevIds || []).push('BwiEti');
             (function() {
@@ -470,5 +491,7 @@
                 document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);
             })();
         </script>
+        -->
+        <script src="/javascripts/custom.js"></script>
     </body>
 </html>
