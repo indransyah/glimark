@@ -608,36 +608,6 @@
         return false
     }
 
-//    function applyDiscount(checkoutId, discountCode) {
-//        $.post({
-//            url: 'https://glimark.myshopify.com/api/graphql',
-//            headers: {
-//                'X-Shopify-Storefront-Access-Token' : '549589367f4ca36528c19bd5c199066a'
-//            },
-//            contentType: 'application/json',
-//            data: JSON.stringify({
-//                'query': `mutation checkoutDiscountCodeApply($discountCode: String!, $checkoutId: ID!) {
-//                        checkoutDiscountCodeApply(discountCode: $discountCode, checkoutId: $checkoutId) {
-//                            userErrors {
-//                                field
-//                                message
-//                            }
-//                            checkout {
-//                                id
-//                            }
-//                        }
-//                    }`,
-//                'variables': {
-//                    discountCode: discountCode,
-//                    checkoutId: checkoutId
-//                }
-//            }),
-//            success: function(res) {
-//                console.log('res', res)
-//            }
-//        })
-//    }
-
     var $ = window.Checkout.$
     var lineItems = []
     var cart, discountReduction = 0
@@ -679,104 +649,6 @@
             $('.total-line--reduction .total-line__price').text(`- ${formatMoney(cart.total_price)}`)
         }
     })
-
-//    $.ajax({
-//        type: 'POST',
-//        url: 'https://glimark.myshopify.com/api/graphql',
-//        headers: {
-//            'X-Shopify-Storefront-Access-Token' : '549589367f4ca36528c19bd5c199066a'
-//        },
-//        contentType: 'application/json',
-//        data: JSON.stringify({
-//            'query': `{
-//                    node(id: "Z2lkOi8vc2hvcGlmeS9DaGVja291dC8xNjcwOGYyZTFkYzcwZTFiOGRhZDhjNjI4YTkzYWE0MT9rZXk9NTZiNGFhNjA1OGUwYzBjMTllNTAzYTQwNTUwYWY5MDc="){
-//                        ... on Checkout{
-//                            id
-//                            email
-//                            availableShippingRates{
-//                                ready
-//                                shippingRates{
-//                                    price
-//                                    title
-//                                }
-//                            }
-//                            completedAt
-//                            createdAt
-//                            currencyCode
-//                            customer{
-//                                email
-//                                firstName
-//                            }
-//                            subtotalPrice
-//                            totalPrice
-//                            lineItems(first: 10){
-//                                edges{
-//                                    node{
-//                                        id
-//                                        quantity
-//                                        title
-//                                        variant{
-//                                            id
-//                                            sku
-//                                            title
-//                                            price
-//                                            image{
-//                                                src
-//                                            }
-//                                            product{
-//                                                id
-//                                                title
-//                                                productType
-//                                                images(first: 10){
-//                                                    edges{
-//                                                        node{
-//                                                            src
-//                                                        }
-//                                                    }
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }`
-//        }),
-//        success: function(res) {
-//            console.log('res', res.data.node)
-//            $('.total-line--subtotal span').text(formatMoney(res.data.node.subtotalPrice))
-//            $('.payment-due__price').text(formatMoney(res.data.node.totalPrice))
-//            var total = 0
-//            res.data.node.lineItems.edges.map(function(item) {
-//                total += parseFloat(item.node.variant.price)
-//                console.log('item', item)
-//                var productTemplate = `
-//                    <tr class="product" data-product-id="${item.node.variant.product.id}" data-variant-id="${item.node.variant.id}" data-product-type="${item.node.variant.product.productType}">
-//                        <td class="product__image">
-//                            <div class="product-thumbnail">
-//                                <div class="product-thumbnail__wrapper">
-//                                    <img alt="${item.node.variant.product.title}" class="product-thumbnail__image" src="${item.node.variant.product.images.edges[0].node.src}" />
-//                                </div>
-//                                <span class="product-thumbnail__quantity" aria-hidden="true">${item.node.quantity}</span>
-//                            </div>
-//                        </td>
-//                        <td class="product__description">
-//                            <span class="product__description__name order-summary__emphasis">${item.node.variant.product.title}</span>
-//                            <span class="product__description__variant order-summary__small-text"></span>
-//                        </td>
-//                        <td class="product__quantity visually-hidden">${item.node.quantity}</td>
-//                        <td class="product__price">
-//                            <span class="order-summary__emphasis">${formatMoney(item.node.variant.price)}</span>
-//                        </td>
-//                    </tr>
-//                    `
-//                $('.product-table tbody').append(productTemplate)
-//            })
-//            total -= res.data.node.totalPrice
-//            $('.total-line--reduction .total-line__price').text(`- ${formatMoney(total.toString())}`)
-//        }
-//    })
 
     $('#checkout_reduction_code').keyup(function(e) {
         if(e.target.value === '') {
@@ -868,35 +740,7 @@
             "email": email,
             "financial_status": "pending"
         }
-
-//        var order = {
-//            "line_items": [
-//                {
-//                    "variant_id": 33815713233,
-//                    "quantity": 1
-//                }
-//            ],
-//            "customer": {
-//                "id": 5580979409
-//            },
-//            "financial_status": "pending"
-//        }
-
         console.log('order', order)
-
-//        $.ajax({
-//            type: "POST",
-//            url: "https://api.glimark.com/order",
-//            headers: {
-//                "X-Token": "RXArS7sTY6gmK95s4nxwKCSSQ7ZDeSsE",
-//                "Content-Type": "application/json",
-//                "Access-Control-Allow-Origin": "*"
-//            },
-//            data: JSON.stringify(order),
-//            success: function (data) {
-//                console.log('after order', data)
-//            }
-//        });
     })
 
     function resetDiscountForm() {
@@ -918,7 +762,6 @@
                             url: glimarkAPIUrl + 'pricerules/' + discount.price_rule_id,
                             success: function (data) {
                                 resetDiscountForm()
-
                                 discountReduction = parseInt(cart.original_total_price.toString().substr(0, cart.original_total_price.toString().length - 2)) * (parseInt(data.value) / 100)
                                 $('.total-line-table__tbody').append(`
                                     <tr class="total-line total-line--reduction " data-discount-success="" data-discount-type="percentage">
@@ -949,7 +792,6 @@
             })
         }
     })
-
 
     $(document).on('click', '.applied-reduction-code__clear-button', function (e) {
         e.preventDefault()
