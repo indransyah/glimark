@@ -1,0 +1,1 @@
+var glimarkAPIUrl = 'http://localhost:3001/'
