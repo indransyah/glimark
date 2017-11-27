@@ -13,7 +13,8 @@ function validateEmail(email) {
 
 var $ = window.Checkout.$
 var lineItems = []
-var cart, discountReduction = 0
+var cart
+var _TOTAL = 0, _DISCOUNT = 0, _SHIPPING = 0
 
 $.ajax({
     type: 'GET',
@@ -22,7 +23,9 @@ $.ajax({
     success: function(data) {
         cart = data
         $('.total-line--subtotal span').text(formatMoney(cart.original_total_price))
-        $('.payment-due__price').text(formatMoney(cart.total_price))
+        // $('.payment-due__price').text(formatMoney(cart.total_price))
+        _TOTAL = cart.total_price
+        updateTotalPrice()
         cart.items.map(function(item) {
             lineItems.push({
                 variant_id: item.variant_id,
@@ -57,6 +60,17 @@ $.ajax({
         }
     }
 })
+
+function updateTotalPrice() {
+    var tmp = _TOTAL
+    if (_DISCOUNT) {
+        tmp -= _DISCOUNT
+    }
+    if (_SHIPPING) {
+        tmp -= _SHIPPING
+    }
+    $('.payment-due__price').text(formatMoney(tmp))
+}
 
 $('#checkout_reduction_code').keyup(function(e) {
     if(e.target.value === '') {
@@ -118,7 +132,7 @@ function resetDiscountForm() {
 function applyDiscount(data) {
     resetDiscountForm()
     $('.total-line-table__tbody').find('.total-line--reduction').remove()
-    discountReduction = parseInt(cart.original_total_price.toString().substr(0, cart.original_total_price.toString().length - 2)) * (parseInt(data.value) / 100)
+    var discountReduction = parseInt(cart.original_total_price.toString().substr(0, cart.original_total_price.toString().length - 2)) * (parseInt(data.value) / 100)
     $('.total-line-table__tbody').append(`
         <tr class="total-line total-line--reduction" data-discount-success="" data-discount-type="percentage">
             <td class="total-line__name">
@@ -140,7 +154,9 @@ function applyDiscount(data) {
         </tr>
     `)
     var total = parseInt(cart.total_price.toString().substr(0, cart.total_price.toString().length - 2)) + discountReduction
-    $('.payment-due__price').text(new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 2 }).format(total))
+    // $('.payment-due__price').text(new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 2 }).format(total))
+    _DISCOUNT = parseInt(total.toString() + '00')
+    updateTotalPrice()
 }
 
 $('.order-summary__section--discount form').submit(function (e) {
@@ -148,7 +164,6 @@ $('.order-summary__section--discount form').submit(function (e) {
     if (!$('.order-summary__section--discount button').hasClass('btn--disabled')) {
         const discountCode = $('#checkout_reduction_code').val()
         $.ajax({
-            type: 'GET',
             url: glimarkAPIUrl + 'discounts?code=' + discountCode.toUpperCase(),
             success: function (data) {
                 if (data.length === 1) {
@@ -171,7 +186,9 @@ $('.order-summary__section--discount form').submit(function (e) {
 $(document).on('click', '.applied-reduction-code__clear-button', function (e) {
     e.preventDefault()
     $('.total-line-table__tbody').find('.total-line--reduction').remove()
-    $('.payment-due__price').text(formatMoney(cart.total_price))
+    _DISCOUNT = 0
+    // $('.payment-due__price').text(formatMoney(cart.total_price))
+    updateTotalPrice()
     localStorage.removeItem('discount')
 })
 
@@ -179,6 +196,56 @@ if (Shopify.Checkout.step === 'shipping_method') {
     var order = JSON.parse(localStorage.getItem('order'))
     if (order && Object.keys(order.customer).length > 0) {
         $('.review-block__content').text(order.shipping_address.address1 + ', ' + order.shipping_address.province + ', ' + order.shipping_address.country)
+        $.ajax({
+            url: glimarkAPIUrl + 'shipping_zones',
+            success: function (data) {
+                var province = data[0].countries[0].provinces.find(function(value) {
+                    return value.name == order.shipping_address.province
+                })
+                var shippingRates
+                if (province) {
+                    shippingRates = data[0].price_based_shipping_rates[0]
+                } else {
+                    shippingRates = data[1].price_based_shipping_rates[0]
+                }
+                var shippingPrice = shippingRates.price === "0.00" ? 'Free' : new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 2 }).format(parseInt(shippingRates.price.substr(0, shippingRates.price.length - 2)))
+                $('.section--shipping-method').append(`
+                    <div class="section__content">
+                        <div class="content-box" data-shipping-methods="">
+                            <div class="content-box__row">
+                                <div class="radio-wrapper" data-shipping-method="shopify-1-2%20days%20delivery-14000.00">
+                                    <div class="radio__input">
+                                        <input
+                                            class="input-radio"
+                                            type="radio"
+                                            value="${shippingPrice === "Free" ? 0 : parseInt(shippingRates.price)}"
+                                            name="checkout[shipping_rate][id]"
+                                            id="checkout_shipping_rate_id_shopify-1-220days20delivery-1400000"
+                                            checked="checked"
+                                        />
+                                    </div>
+                                    <label class="radio__label" for="checkout_shipping_rate_id_shopify-1-220days20delivery-1400000">
+                                        <span class="radio__label__primary" data-shipping-method-label-title="1-2 days delivery">
+                                            1-2 days delivery
+                                        </span>
+                                        <span class="radio__label__accessory">
+                                            <span class="content-box__emphasis">
+                                                ${shippingPrice}
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- /radio-wrapper-->
+                            </div>
+                        </div>
+                    </div>
+                `)
+                $('.total-line--shipping').find('.total-line__price span').text(shippingPrice)
+                _SHIPPING = parseInt(parseInt(shippingRates.price).toString() + '00')
+                updateTotalPrice()
+                // $('.payment-due__price').text(formatMoney(cart.total_price + parseInt(shippingRates.price)))
+            }
+        })
     } else {
         window.location.assign('/customer-information.html')
     }

@@ -35,5 +35,435 @@
       "prerequisite_shipping_price_range": null,
       "title": "DISKON50"
     }
+  ],
+  "shipping_zones": [
+    {
+      "id": 392240273,
+      "name": "Jadetabek",
+      "countries": [
+        {
+          "id": 492417105,
+          "name": "Indonesia",
+          "tax": 0,
+          "code": "ID",
+          "tax_name": "VAT",
+          "provinces": [
+            {
+              "id": 6528467153,
+              "country_id": 492417105,
+              "name": "Banten",
+              "code": "BT",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": "normal",
+              "shipping_zone_id": 392240273,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6628428433,
+              "country_id": 492417105,
+              "name": "Jakarta",
+              "code": "JK",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 392240273,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6528467473,
+              "country_id": 492417105,
+              "name": "Jawa Barat",
+              "code": "JB",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": "normal",
+              "shipping_zone_id": 392240273,
+              "tax_percentage": 0
+            }
+          ]
+        }
+      ],
+      "weight_based_shipping_rates": [],
+      "price_based_shipping_rates": [
+        {
+          "id": 33688017,
+          "name": "1-2 days delivery (1 day Jadetabek, 2 days the rest)",
+          "min_order_subtotal": "0.00",
+          "price": "0.00",
+          "max_order_subtotal": null,
+          "shipping_zone_id": 392240273
+        }
+      ],
+      "carrier_shipping_rate_providers": []
+    },
+    {
+      "id": 396385809,
+      "name": "Non-Jadetabek",
+      "countries": [
+        {
+          "id": 492417105,
+          "name": "Indonesia",
+          "tax": 0,
+          "code": "ID",
+          "tax_name": "VAT",
+          "provinces": [
+            {
+              "id": 6618322257,
+              "country_id": 492417105,
+              "name": "Aceh",
+              "code": "AC",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322321,
+              "country_id": 492417105,
+              "name": "Bali",
+              "code": "BA",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322385,
+              "country_id": 492417105,
+              "name": "Bangka Belitung",
+              "code": "BB",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322449,
+              "country_id": 492417105,
+              "name": "Bengkulu",
+              "code": "BE",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322513,
+              "country_id": 492417105,
+              "name": "Gorontalo",
+              "code": "GO",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322577,
+              "country_id": 492417105,
+              "name": "Jambi",
+              "code": "JA",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322641,
+              "country_id": 492417105,
+              "name": "Jawa Tengah",
+              "code": "JT",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322705,
+              "country_id": 492417105,
+              "name": "Jawa Timur",
+              "code": "JI",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322769,
+              "country_id": 492417105,
+              "name": "Kalimantan Barat",
+              "code": "KB",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322833,
+              "country_id": 492417105,
+              "name": "Kalimantan Selatan",
+              "code": "KS",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322897,
+              "country_id": 492417105,
+              "name": "Kalimantan Tengah",
+              "code": "KT",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618322961,
+              "country_id": 492417105,
+              "name": "Kalimantan Timur",
+              "code": "KI",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323025,
+              "country_id": 492417105,
+              "name": "Kalimantan Utara",
+              "code": "KU",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323089,
+              "country_id": 492417105,
+              "name": "Kepulauan Riau",
+              "code": "KR",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323153,
+              "country_id": 492417105,
+              "name": "Lampung",
+              "code": "LA",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323217,
+              "country_id": 492417105,
+              "name": "Maluku",
+              "code": "MA",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323281,
+              "country_id": 492417105,
+              "name": "Maluku Utara",
+              "code": "MU",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323345,
+              "country_id": 492417105,
+              "name": "Nusa Tenggara Barat",
+              "code": "NB",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323409,
+              "country_id": 492417105,
+              "name": "Nusa Tenggara Timur",
+              "code": "NT",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323473,
+              "country_id": 492417105,
+              "name": "Papua",
+              "code": "PA",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323537,
+              "country_id": 492417105,
+              "name": "Papua Barat",
+              "code": "PB",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323601,
+              "country_id": 492417105,
+              "name": "Riau",
+              "code": "RI",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323665,
+              "country_id": 492417105,
+              "name": "Sulawesi Barat",
+              "code": "SR",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323729,
+              "country_id": 492417105,
+              "name": "Sulawesi Selatan",
+              "code": "SN",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323793,
+              "country_id": 492417105,
+              "name": "Sulawesi Tengah",
+              "code": "ST",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323857,
+              "country_id": 492417105,
+              "name": "Sulawesi Tenggara",
+              "code": "SG",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323921,
+              "country_id": 492417105,
+              "name": "Sulawesi Utara",
+              "code": "SA",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618323985,
+              "country_id": 492417105,
+              "name": "Sumatra Barat",
+              "code": "SB",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618324049,
+              "country_id": 492417105,
+              "name": "Sumatra Selatan",
+              "code": "SS",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618324113,
+              "country_id": 492417105,
+              "name": "Sumatra Utara",
+              "code": "SU",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            },
+            {
+              "id": 6618324177,
+              "country_id": 492417105,
+              "name": "Yogyakarta",
+              "code": "YO",
+              "tax": 0,
+              "tax_name": "VAT",
+              "tax_type": null,
+              "shipping_zone_id": 396385809,
+              "tax_percentage": 0
+            }
+          ]
+        }
+      ],
+      "weight_based_shipping_rates": [],
+      "price_based_shipping_rates": [
+        {
+          "id": 34139345,
+          "name": "1-2 days delivery",
+          "min_order_subtotal": "0.00",
+          "price": "14000.00",
+          "max_order_subtotal": null,
+          "shipping_zone_id": 396385809
+        }
+      ],
+      "carrier_shipping_rate_providers": []
+    }
   ]
 }
