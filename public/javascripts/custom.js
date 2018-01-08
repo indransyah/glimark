@@ -21,6 +21,9 @@ $.ajax({
     url: 'https://www.glimark.com/cart.json',
     dataType: 'jsonp',
     success: function(data) {
+        if (data.items.length === 0) {
+            window.location.assign('https://www.glimark.com/cart')
+        }
         cart = data
         $('.total-line--subtotal span').text(formatMoney(cart.original_total_price))
         // $('.payment-due__price').text(formatMoney(cart.total_price))
@@ -165,19 +168,12 @@ $('.order-summary__section--discount form').submit(function (e) {
         const discountCode = $('#checkout_reduction_code').val()
         $.ajax({
             url: glimarkAPIUrl + 'discounts?code=' + discountCode.toUpperCase(),
+            headers: {
+                'X-Token': token
+            },
             success: function (data) {
-                if (data.length === 1) {
-                    var discount = data[0]
-                    $.ajax({
-                        url: glimarkAPIUrl + 'pricerules/' + discount.price_rule_id,
-                        success: function (data) {
-                            localStorage.setItem('discount', JSON.stringify(data))
-                            applyDiscount(data)
-                        }
-                    })
-                } else {
-                    resetDiscountForm()
-                }
+                localStorage.setItem('discount', JSON.stringify(data))
+                applyDiscount(data)
             }
         })
     }
@@ -198,6 +194,9 @@ if (Shopify.Checkout.step === 'shipping_method') {
         $('.review-block__content').text(order.shipping_address.address1 + ', ' + order.shipping_address.province + ', ' + order.shipping_address.country)
         $.ajax({
             url: glimarkAPIUrl + 'shipping_zones',
+            headers: {
+                'X-Token': token
+            },
             success: function (data) {
                 var province = data[0].countries[0].provinces.find(function(value) {
                     return value.name == order.shipping_address.province
@@ -251,6 +250,18 @@ if (Shopify.Checkout.step === 'shipping_method') {
     }
     $('.step form').submit(function (e) {
         e.preventDefault()
+        $.post({
+            url: glimarkAPIUrl + 'order',
+            headers: {
+                'X-Token': token
+            },
+            data: {
+                order: order
+            },
+            success: function (data) {
+                window.location.assign(data.payload.invoice_url)
+            }
+        })
     })
 }
 if (Shopify.Checkout.step === 'contact_information') {
